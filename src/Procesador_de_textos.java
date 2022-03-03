@@ -17,7 +17,7 @@ class MarcoProcesador extends JFrame
 {
 	MarcoProcesador()
 	{
-		setBounds(400,400,400,300);
+		setBounds(200,200,600,400);
 		setTitle("Procesador de Textos");
 		LaminaProcesador lamina=new LaminaProcesador();
 		add(lamina);
