@@ -143,12 +143,28 @@ class LaminaProcesador extends JPanel
 		botonAmarillo.addActionListener(new StyledEditorKit.ForegroundAction("amarillo", Color.yellow));
 		botonRojo.addActionListener(new StyledEditorKit.ForegroundAction("rojo", Color.red));
 		botonAzul.addActionListener(new StyledEditorKit.ForegroundAction("azul", Color.blue));
-
+		
 		barra.add(botonVerde);
 		barra.add(botonAmarillo);
 		barra.add(botonRojo);
 		barra.add(botonAzul);
 
+		//Cambiar alineación
+		JButton alineacionIzquierda=new JButton(new ImageIcon("src/img/alineacionIzquierda.png"));
+		JButton alineacionDerecha=new JButton(new ImageIcon("src/img/alineacionDerecha.png"));
+		JButton alineacionCentrada=new JButton(new ImageIcon("src/img/alineacionCentrada.png"));
+		JButton alineacionJustificado=new JButton(new ImageIcon("src/img/alineacionJustificado.png"));
+		
+		alineacionIzquierda.addActionListener(new StyledEditorKit.AlignmentAction("Alineacion izquierda", 0));
+		alineacionDerecha.addActionListener(new StyledEditorKit.AlignmentAction("Alineacion derecha", 2));
+		alineacionCentrada.addActionListener(new StyledEditorKit.AlignmentAction("Alineacion centrada", 1));
+		alineacionJustificado.addActionListener(new StyledEditorKit.AlignmentAction("Alineacion justificado", 3));
+		
+		barra.add(alineacionIzquierda);
+		barra.add(alineacionDerecha);
+		barra.add(alineacionCentrada);
+		barra.add(alineacionJustificado);
+		
 		add(barra, BorderLayout.WEST);
 	}
 
