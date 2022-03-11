@@ -27,6 +27,7 @@ class MarcoProcesador extends JFrame
 class LaminaProcesador extends JPanel
 {
 	private JTextPane areaTexto;
+	private JToolBar barra;
 
 	LaminaProcesador()
 	{
@@ -117,55 +118,41 @@ class LaminaProcesador extends JPanel
 		cursivaE.addActionListener(new StyledEditorKit.ItalicAction());
 		subrayadoE.addActionListener(new StyledEditorKit.UnderlineAction());
 		areaTexto.setComponentPopupMenu(emergente);
-
-		//Barra de Herramientas
-		JToolBar barra=new JToolBar(1); //1: orientacion vertical de la barra
-
-		JButton botonNegrita=new JButton(new ImageIcon("src/img/Negrita.png"));
-		JButton botonCursiva=new JButton(new ImageIcon("src/img/Cursiva.png"));
-		JButton botonSubrayado=new JButton(new ImageIcon("src/img/Subrayado.png"));
-
-		botonNegrita.addActionListener(new StyledEditorKit.BoldAction());
-		botonCursiva.addActionListener(new StyledEditorKit.ItalicAction());
-		botonSubrayado.addActionListener(new StyledEditorKit.UnderlineAction());
-
-		barra.add(botonNegrita);
-		barra.add(botonCursiva);
-		barra.add(botonSubrayado);
-
-		//Cambiar colores la letra
-		JButton botonVerde=new JButton(new ImageIcon("src/img/corazon_verde.png"));
-		JButton botonAmarillo=new JButton(new ImageIcon("src/img/corazon_amarillo.png"));
-		JButton botonRojo=new JButton(new ImageIcon("src/img/corazon_rojo.png"));
-		JButton botonAzul=new JButton(new ImageIcon("src/img/corazon_azul.png"));
-
-		botonVerde.addActionListener(new StyledEditorKit.ForegroundAction("verde", Color.green));
-		botonAmarillo.addActionListener(new StyledEditorKit.ForegroundAction("amarillo", Color.yellow));
-		botonRojo.addActionListener(new StyledEditorKit.ForegroundAction("rojo", Color.red));
-		botonAzul.addActionListener(new StyledEditorKit.ForegroundAction("azul", Color.blue));
 		
-		barra.add(botonVerde);
-		barra.add(botonAmarillo);
-		barra.add(botonRojo);
-		barra.add(botonAzul);
+		//Barra de herramientas
+		
+		barra=new JToolBar(1);
 
-		//Cambiar alineación
-		JButton alineacionIzquierda=new JButton(new ImageIcon("src/img/alineacionIzquierda.png"));
-		JButton alineacionDerecha=new JButton(new ImageIcon("src/img/alineacionDerecha.png"));
-		JButton alineacionCentrada=new JButton(new ImageIcon("src/img/alineacionCentrada.png"));
-		JButton alineacionJustificado=new JButton(new ImageIcon("src/img/alineacionJustificado.png"));
-		
-		alineacionIzquierda.addActionListener(new StyledEditorKit.AlignmentAction("Alineacion izquierda", 0));
-		alineacionDerecha.addActionListener(new StyledEditorKit.AlignmentAction("Alineacion derecha", 2));
-		alineacionCentrada.addActionListener(new StyledEditorKit.AlignmentAction("Alineacion centrada", 1));
-		alineacionJustificado.addActionListener(new StyledEditorKit.AlignmentAction("Alineacion justificado", 3));
-		
-		barra.add(alineacionIzquierda);
-		barra.add(alineacionDerecha);
-		barra.add(alineacionCentrada);
-		barra.add(alineacionJustificado);
-		
+		agregarBotonBarra("src/img/Negrita.png").addActionListener(new StyledEditorKit.BoldAction());
+		agregarBotonBarra("src/img/Cursiva.png").addActionListener(new StyledEditorKit.ItalicAction());
+		agregarBotonBarra("src/img/Subrayado.png").addActionListener(new StyledEditorKit.UnderlineAction());
+		barra.addSeparator();
+		agregarBotonBarra("src/img/corazon_verde.png").
+		addActionListener(new StyledEditorKit.ForegroundAction("verde", Color.green));
+		agregarBotonBarra("src/img/corazon_amarillo.png").
+		addActionListener(new StyledEditorKit.ForegroundAction("amarillo", Color.yellow));
+		agregarBotonBarra("src/img/corazon_azul.png").
+		addActionListener(new StyledEditorKit.ForegroundAction("azul", Color.blue));
+		agregarBotonBarra("src/img/corazon_rojo.png").
+		addActionListener(new StyledEditorKit.ForegroundAction("rojo", Color.red));
+		barra.addSeparator();
+		agregarBotonBarra("src/img/alineacionIzquierda.png").
+		addActionListener(new StyledEditorKit.AlignmentAction("Alineacion izquierda", 0));
+		agregarBotonBarra("src/img/alineacionDerecha.png").
+		addActionListener(new StyledEditorKit.AlignmentAction("Alineacion derecha", 2));
+		agregarBotonBarra("src/img/alineacionCentrada.png").
+		addActionListener(new StyledEditorKit.AlignmentAction("Alineacion centrada", 1));
+		agregarBotonBarra("src/img/alineacionJustificado.png").
+		addActionListener(new StyledEditorKit.AlignmentAction("Alineacion justificado", 3));
+	
 		add(barra, BorderLayout.WEST);
+	}
+	
+	public JButton agregarBotonBarra(String ruta)
+	{
+		JButton boton=new JButton(new ImageIcon(ruta));
+		barra.add(boton);
+		return boton;
 	}
 
 }
